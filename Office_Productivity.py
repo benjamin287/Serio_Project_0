@@ -28,7 +28,7 @@ def main():
             for elem in lst_offices:
                 print(elem)
         elif action_type == "2":
-            print("\n\n***** OPERATION UNDER DEVELP6OMENT *****")
+            print("\n\n***** OPERATION UNDER DEVELPOMENT *****")
         elif action_type == "3":
             print("\n\n***** OPERATION UNDER DEVELPOMENT *****")
         elif action_type == "4":
