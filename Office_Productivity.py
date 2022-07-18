@@ -28,7 +28,7 @@ def main():
             for elem in lst_offices:
                 print(elem)
         elif action_type == "2":
-            print("\n\n***** OPERATION UNDER DEVELPOMENT *****")
+            lst_offices = edit_offices(lst_offices)
         elif action_type == "3":
             print("\n\n***** OPERATION UNDER DEVELPOMENT *****")
         elif action_type == "4":
@@ -172,7 +172,7 @@ def insert_office() -> Location:
                 print("\nCANNOT ENTER A STRING FOR TIRES! PLEASE ENTER AN INTEGER!\n")
             except DivisibleBy4Error as ve:
                 print("\nTIRES MUST BE SOLD IN UNITS OF 4!\n")
-                logging.error("Tried to enter an invalid value for tires sold")
+                logging.error("Tried to enter an invalid value for tires sold for" + name + " " + manager)
             else:
                 break
 
@@ -181,12 +181,6 @@ def insert_office() -> Location:
         while True:
             try:
                 customers = int(input("\nEnter vehicles repaired(week):\n>>>"))
-                check = re.search(",", name)
-
-                if check != None:
-                    raise CommaError
-            except CommaError:
-                print("CANNOT HAVE COMMAS IN INPUT!\n")
             except ValueError as ve:
                 print("\nCANNOT ENTER A STRING FOR VEHICLES! PLEASE ENTER AN INTEGER!\n")
             else:
@@ -207,6 +201,81 @@ def insert_office() -> Location:
     else:
         return None
 
+
+
+def edit_offices(lst) -> Location:
+    '''
+    edit_offices
+
+    This function allows the user to change the descriptive data for the offices each week or as neccesary
+
+    Takes in a list of offices
+    Returns a list of offices
+    '''
+    while True:
+        print("\nPlease select the type of edits you are making:")
+        print("\t1) Weekly Update (Edit All Locations)")
+        print("\t2) Value Correction (Single Office)")
+        print("\t3) Admin Details")
+        print("\t4) Done Editing")
+        Edit_type = input(">>> ")
+
+    
+        if Edit_type == "1":
+            
+            for office in lst:
+                print("\nEditing:", end= " " )
+                print(office)
+                print(type(office))
+                while True:
+                    try:
+                        office._hours = int(input("\nEnter hours worked(week):\n>>>"))
+
+                    except ValueError as ve:
+                        print("\nCANNOT ENTER A STRING FOR HOURS! PLEASE ENTER AN INTEGER!\n")
+                    else:
+                        break
+
+                if type(office) == Retail:
+                        
+                    while True:
+                        try:
+                            office._customers = int(input("\nEnter tires sold(week):\n>>>"))
+
+                            if office._customers%4 != 0:
+                                raise DivisibleBy4Error
+
+                        except ValueError as ve:
+                            print("\nCANNOT ENTER A STRING FOR TIRES! PLEASE ENTER AN INTEGER!\n")
+                        except DivisibleBy4Error as ve:
+                            print("\nTIRES MUST BE SOLD IN UNITS OF 4!\n")
+                            logging.error("Tried to enter an invalid value for tires sold for" + office._name + " " + office._manager)
+                        else:
+                            break
+
+                elif type(office) == Repair:
+                        
+                    while True:
+                        try:
+                            office._customers = int(input("\nEnter vehicles repaired(week):\n>>>"))
+                        except ValueError as ve:
+                            print("\nCANNOT ENTER A STRING FOR VEHICLES! PLEASE ENTER AN INTEGER!\n")
+                        else:
+                            break
+        
+                elif type(office) == Admin:
+                    office._customers = 0
+            
+        elif Edit_type == "2":
+            print("\n\n***** OPERATION UNDER DEVELPOMENT *****")
+        elif Edit_type == "3":
+            print("\n\n***** OPERATION UNDER DEVELPOMENT *****")
+        elif Edit_type == "4":
+            print("\n\nExiting Editor!")
+            return lst
+        else:
+            print("\n\n***** INVALID INPUT: Please enter 1-5 *****")
+        print("\n\nDirecting back to editor menu....")
 
     
 
