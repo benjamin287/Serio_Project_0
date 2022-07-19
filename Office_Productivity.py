@@ -30,7 +30,7 @@ def main():
         elif action_type == "2":
             lst_offices = edit_offices(lst_offices)
         elif action_type == "3":
-            print("\n\n***** OPERATION UNDER DEVELPOMENT *****")
+            productivity_view(lst_offices)
         elif action_type == "4":
             office = insert_office()
             if office == None:
@@ -381,6 +381,48 @@ def edit_offices(lst) -> Location:
         else:
             print("\n\n***** INVALID INPUT: Please enter 1-5 *****")
         print("\n\nDirecting back to editor menu....")
+
+def productivity_view(lst) -> None:
+    '''
+    productivity_view
+
+    This function allows the view productivity ratings for specific offices
+
+    Returns nothing
+    '''
+    while True:
+        print("\n\n***** Office Indexes *****")
+        i = 0
+        for elem in lst:
+            print("Index: " + str(i), end= " ")
+            print(elem)
+            i = i + 1
+        
+        print("Index: " + str(i) + " EXIT PRODUCTIVITY VIEW")
+
+        while True:
+            try:
+                selected_index = int(input("\nEnter the Index of the Office you wish to view:\n>>>"))
+
+                if selected_index  >= i+1:
+                    raise TooLargeError
+            except TooLargeError:
+                print("\nSPECIFIED INDEX NOT IN LIST!\n")
+            except ValueError as ve:
+                print("\nCANNOT ENTER A STRING FOR INDEX! PLEASE ENTER AN INTEGER!\n")
+            else:
+                break
+        
+        if selected_index == i:
+            return None
+        else:
+            lst[selected_index].Emp_Util()
+            lst[selected_index].Hours_Eff()
+            
+
+        
+        
+
 
     
 
