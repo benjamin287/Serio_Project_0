@@ -273,6 +273,70 @@ def edit_offices(lst) -> Location:
                 print("Index: " + str(i), end= " ")
                 print(elem)
                 i = i + 1
+
+            while True:
+                try:
+                    selected_index = int(input("\nEnter the Index of the Office you wish to edit:\n>>>"))
+
+                    if selected_index  >= i:
+                        raise TooLargeError
+                except TooLargeError:
+                    print("\nSPECIFIED INDEX NOT IN LIST!\n")
+                except ValueError as ve:
+                    print("\nCANNOT ENTER A STRING FOR VEHICLES! PLEASE ENTER AN INTEGER!\n")
+                else:
+                    break
+            
+            print("\nEditing:", end= " " )
+            print(lst[selected_index])
+            print(type(lst[selected_index]))
+
+            while True:
+                try:
+                    lst[selected_index]._hours = int(input("\nEnter hours worked(week):\n>>>"))
+
+                except ValueError as ve:
+                    print("\nCANNOT ENTER A STRING FOR HOURS! PLEASE ENTER AN INTEGER!\n")
+                else:
+                    break
+
+            if type(lst[selected_index]) == Retail:
+                    
+                while True:
+                    try:
+                        lst[selected_index]._customers = int(input("\nEnter tires sold(week):\n>>>"))
+
+                        if lst[selected_index]._customers%4 != 0:
+                            raise DivisibleBy4Error
+
+                    except ValueError as ve:
+                        print("\nCANNOT ENTER A STRING FOR TIRES! PLEASE ENTER AN INTEGER!\n")
+                    except DivisibleBy4Error as ve:
+                        print("\nTIRES MUST BE SOLD IN UNITS OF 4!\n")
+                        logging.error("Tried to enter an invalid value for tires sold for" + lst[selected_index]._name + " " + lst[selected_index]._manager)
+                    else:
+                        break
+
+            elif type(lst[selected_index]) == Repair:
+                    
+                while True:
+                    try:
+                        lst[selected_index]._customers = int(input("\nEnter vehicles repaired(week):\n>>>"))
+                    except ValueError as ve:
+                        print("\nCANNOT ENTER A STRING FOR VEHICLES! PLEASE ENTER AN INTEGER!\n")
+                    else:
+                        break
+    
+            elif type(lst[selected_index]) == Admin:
+                lst[selected_index]._customers = 0
+
+        elif Edit_type == "3":
+            print("\n\n***** Office Indexes *****")
+            i = 0
+            for elem in lst:
+                print("Index: " + str(i), end= " ")
+                print(elem)
+                i = i + 1
             
             while True:
                 try:
@@ -311,8 +375,6 @@ def edit_offices(lst) -> Location:
                     lst[selected_index]._employees = employees
                     break
 
-        elif Edit_type == "3":
-            print("\n\n***** OPERATION UNDER DEVELPOMENT *****")
         elif Edit_type == "4":
             print("\n\nExiting Editor!")
             return lst
