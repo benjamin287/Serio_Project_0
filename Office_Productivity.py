@@ -1,6 +1,6 @@
 from tabnanny import check
 from Offices import Location, Retail, Repair, Admin
-from Office_Custom_Error import CommaError, DivisibleBy4Error
+from Office_Custom_Error import CommaError, DivisibleBy4Error, TooLargeError
 import re
 import logging
 
@@ -267,7 +267,50 @@ def edit_offices(lst) -> Location:
                     office._customers = 0
             
         elif Edit_type == "2":
-            print("\n\n***** OPERATION UNDER DEVELPOMENT *****")
+            print("\n\n***** Office Indexes *****")
+            i = 0
+            for elem in lst:
+                print("Index: " + str(i), end= " ")
+                print(elem)
+                i = i + 1
+            
+            while True:
+                try:
+                    selected_index = int(input("\nEnter the Index of the Office you wish to edit:\n>>>"))
+
+                    if selected_index  >= i:
+                        raise TooLargeError
+                except TooLargeError:
+                    print("\nSPECIFIED INDEX NOT IN LIST!\n")
+                except ValueError as ve:
+                    print("\nCANNOT ENTER A STRING FOR VEHICLES! PLEASE ENTER AN INTEGER!\n")
+                else:
+                    break
+
+            while True:
+                try:
+                    manager = input("\nEnter the manager name:\n>>>")
+                    check = re.search(",", manager)
+                    
+                    if check != None:
+                        raise CommaError
+                except CommaError:
+                    print("CANNOT HAVE COMMAS IN INPUT!\n")
+                else:
+                    lst[selected_index]._manager = manager
+                    break
+
+
+            while True:
+                try:
+                    employees = int(input("\nEnter employee count:\n>>>"))
+
+                except ValueError as ve:
+                    print("\nCANNOT ENTER A STRING FOR EMPLOYEES! PLEASE ENTER AN INTEGER!\n")
+                else:
+                    lst[selected_index]._employees = employees
+                    break
+
         elif Edit_type == "3":
             print("\n\n***** OPERATION UNDER DEVELPOMENT *****")
         elif Edit_type == "4":
