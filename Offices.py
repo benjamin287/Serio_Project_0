@@ -10,7 +10,7 @@ class Location(ABC):
         self._customers = int(customers)
 
     def __str__(self):
-        return "Name: " + self._name + ", Manager: " + self._manager
+        return "Name: " + self._name + ", Manager: " + self._manager + ", Employees: " + str(self._employees) + ", Hours: " + str(self._hours) + ", Customers: " + str(self._customers)
 
 class Retail(Location):
     def Emp_Util(self):
@@ -19,19 +19,19 @@ class Retail(Location):
         elif self._hours / ((self._employees - 2) * 20 + 80) < 0.80:
             print("\nWARNING! Employee Utilization at " + ("%.2f" % ((self._hours / ((self._employees - 2) * 20 + 80))*100))+ "%! Continued under utilization may result in position reduction!")
         elif self._hours / ((self._employees - 2) * 20 + 80) > 1.10:
-            print("\nWARNING! Employee Utilization at " + ("%.2f" % ((self._hours / ((self._employees - 2) * 20 + 80))*100)) + "%! Carefully manage overtime!")
+            print("\nWARNING! Employee Utilization at " + ("%.2f" % ((self._hours / ((self._employees - 2) * 20 + 80))*100)) + "%! Carefully manage overtime! If Work Effeciency is acceptable, positions will be expanded.")
         else:
-            print("\nEmployee Utilization at an acceptable amount" + ("%.2f" % ((self._hours / ((self._employees - 2) * 20 + 80))*100)) + "%!")
+            print("\nEmployee Utilization at an acceptable amount " + ("%.2f" % ((self._hours / ((self._employees - 2) * 20 + 80))*100)) + "%!")
 
     def Hours_Eff(self):
-        if self._customers == (self._hours / 2):
+        if self._customers == (self._hours / 4):
             print("\nGreat! Work Effeciency at 100%")
-        elif self._customers / (self._hours / 2) < 0.80:
-            print("\nWARNING! Work Effeciency at " + ("%.2f" % ((self._customers / (self._hours / 2) )*100))+ "%! Make more sales or reduce hours!")
-        elif self._customers / (self._hours / 2) > 1.10:
-            print("\nFANTASTIC! Work Effeciency at " + ("%.2f" % ((self._customers / (self._hours / 2) )*100)) + "%! Continured over performance may result in position expansion!")
+        elif self._customers / (self._hours / 4) < 0.80:
+            print("\nWARNING! Work Effeciency at " + ("%.2f" % ((self._customers / (self._hours / 4) )*100))+ "%! Make more sales or reduce hours!")
+        elif self._customers / (self._hours / 4) > 1.10:
+            print("\nFANTASTIC! Work Effeciency at " + ("%.2f" % ((self._customers / (self._hours / 4) )*100)) + "%!")
         else:
-            print("\nEmployee Utilization at an acceptable amount" + ("%.2f" % ((self._customers / (self._hours / 2))*100)) + "%!")
+            print("\nEmployee Utilization at an acceptable amount " + ("%.2f" % ((self._customers / (self._hours / 4))*100)) + "%!")
 
 
 class Repair(Location):

@@ -1,11 +1,12 @@
-Retail,Little Rock,George,8,200,40
-Repair,Little Rock,Ethan,6,240,10
+Retail,Little Rock,George,8,200,48
+Repair,Little Rock,Ethan,6,22,21
 Admin,Little Rock,Greg,10,400,0
-Retail,Benton,Sally,6,160,36
-Retail,Jonnesboro,Kelly,10,240,80
-Repair,Jonnesboro,Kent,4,160,4
-Retail,Pine Bluff,Philip,8,300,24
-Retail,Fayetteville,Sue,10,240,48
-Repair,Fayetteville,Grant,6,240,8
-Retail,Springdale,Alvin,8,200,28
-Retail,Grambling,Stevie,6,80,40
+Retail,Benton,Sally,6,160,40
+Retail,Jonnesboro,Kelly,10,260,72
+Repair,Jonnesboro,Kent,4,100,9
+Retail,Pine Bluff,Philip,8,215,12
+Retail,Fayetteville,Sue,9,270,36
+Repair,Fayetteville,Grant,6,160,18
+Retail,Springdale,Alvin,8,188,32
+Retail,Grambling,Stevie,6,100,24
+Repair,Benton,Geromino,73,50000,1
