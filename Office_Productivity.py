@@ -158,11 +158,11 @@ def insert_office() -> Location:
         try:
             hours = int(input("\nEnter hours worked(week):\n>>>"))
 
-            if hours > 300:
+            if hours > 500:
                 raise TooLargeError
 
         except TooLargeError:
-            print("\nHours worked should 300 or less!\n")
+            print("\nHours worked should 500 or less!\n")
         except ValueError as ve:
             print("\nCANNOT ENTER A STRING FOR HOURS! PLEASE ENTER AN INTEGER!\n")
         else:
@@ -251,10 +251,10 @@ def edit_offices(lst) -> Location:
                     try:
                         office._hours = int(input("\nEnter hours worked(week):\n>>>"))
 
-                        if office._hours > 300:
+                        if office._hours > 500:
                             raise TooLargeError
                     except TooLargeError:
-                        print("\nHours worked should 300 or less!\n")
+                        print("\nHours worked should 500 or less!\n")
                     except ValueError as ve:
                         print("\nCANNOT ENTER A STRING FOR HOURS! PLEASE ENTER AN INTEGER!\n")
                     else:
@@ -277,7 +277,7 @@ def edit_offices(lst) -> Location:
                             print("\nCANNOT ENTER A STRING FOR TIRES! PLEASE ENTER AN INTEGER!\n")
                         except DivisibleBy4Error as ve:
                             print("\nTIRES MUST BE SOLD IN UNITS OF 4!\n")
-                            logging.error("Tried to enter an invalid value for tires sold for" + office._name + " " + office._manager)
+                            logging.error("Tried to enter an invalid value for tires sold for " + office._name + " " + office._manager)
                         else:
                             break
 
@@ -329,10 +329,10 @@ def edit_offices(lst) -> Location:
                 try:
                     lst[selected_index]._hours = int(input("\nEnter hours worked(week):\n>>>"))
 
-                    if lst[selected_index]._hours > 300:
+                    if lst[selected_index]._hours > 500:
                         raise TooLargeError
                 except TooLargeError:
-                    print("\nHours worked should 300 or less!\n")   
+                    print("\nHours worked should 500 or less!\n")   
                 except ValueError as ve:
                     print("\nCANNOT ENTER A STRING FOR HOURS! PLEASE ENTER AN INTEGER!\n")
                 else:
@@ -355,7 +355,7 @@ def edit_offices(lst) -> Location:
                         print("\nCANNOT ENTER A STRING FOR TIRES! PLEASE ENTER AN INTEGER!\n")
                     except DivisibleBy4Error as ve:
                         print("\nTIRES MUST BE SOLD IN UNITS OF 4!\n")
-                        logging.error("Tried to enter an invalid value for tires sold for" + lst[selected_index]._name + " " + lst[selected_index]._manager)
+                        logging.error("Tried to enter an invalid value for tires sold for " + lst[selected_index]._name + " " + lst[selected_index]._manager)
                     else:
                         break
 
@@ -365,7 +365,7 @@ def edit_offices(lst) -> Location:
                     try:
                         lst[selected_index]._customers = int(input("\nEnter vehicles repaired(week):\n>>>"))
                         
-                        if  office._customers > 50:
+                        if  lst[selected_index]._customers > 50:
                             raise TooLargeError
 
                     except TooLargeError:
@@ -398,6 +398,10 @@ def edit_offices(lst) -> Location:
                     print("\nCANNOT ENTER A STRING FOR INDEX! PLEASE ENTER AN INTEGER!\n")
                 else:
                     break
+
+            print("\nEditing:", end= " " )
+            print(lst[selected_index])
+            print(type(lst[selected_index]))
 
             while True:
                 try:
