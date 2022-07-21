@@ -186,7 +186,7 @@ def insert_office() -> Location:
                 print("\nCANNOT ENTER A STRING FOR TIRES! PLEASE ENTER AN INTEGER!\n")
             except DivisibleBy4Error as ve:
                 print("\nTIRES MUST BE SOLD IN UNITS OF 4!\n")
-                logging.error("Tried to enter an invalid value for tires sold for" + name + " " + manager)
+                logging.error("Tried to enter an invalid value for tires sold for " + name + " " + manager)
             else:
                 break
 

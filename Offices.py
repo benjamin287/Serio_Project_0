@@ -43,7 +43,7 @@ class Repair(Location):
         elif self._hours / ((self._employees - 2) * 40 + 40) > 1.10:
             print("\nWARNING! Employee Utilization at " + ("%.2f" % ((self._hours / ((self._employees - 2) * 40 + 40))*100)) + "%! Carefully manage overtime! If Work Effeciency is acceptable, positions will be expanded.")
         else:
-            print("\nEmployee Utilization at an acceptable amount" + ("%.2f" % ((self._hours / ((self._employees - 2) * 40 + 40))*100)) + "%!")
+            print("\nEmployee Utilization at an acceptable amount " + ("%.2f" % ((self._hours / ((self._employees - 2) * 40 + 40))*100)) + "%!")
     def Hours_Eff(self):
         if self._customers == (self._hours / 10):
             print("\nGreat! Work Effeciency at 100%")
